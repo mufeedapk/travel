@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+    <style>
+        body{
+          font-family: Calibri, Helvetica, sans-serif;
+          background-color: pink;
+        }
+        .container {
+            padding: 50px;
+          background-color: lightblue;
+        }
+
+        input[type=text], input[type=password],input[type=email], textarea {
+          width: 100%;
+          padding: 15px;
+          margin: 5px 0 22px 0;
+          display: inline-block;
+          border: none;
+          background: #f1f1f1;
+        }
+        input[type=text]:focus, input[type=password],input[type=email]:focus {
+          background-color: orange;
+          outline: none;
+        }
+         div {
+                    padding: 10px 0;
+                 }
+        hr {
+          border: 1px solid #f1f1f1;
+          margin-bottom: 25px;
+        }
+        .registerbtn {
+          background-color: #4CAF50;
+          color: white;
+          padding: 16px 20px;
+          margin: 8px 0;
+          border: none;
+          cursor: pointer;
+          width: 100%;
+          opacity: 0.9;
+        }
+        .registerbtn:hover {
+          opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <form action="register" method="post">
+        {% csrf_token %}
+        <div class="container">
+            <h1> Registeration Form</h1>
+            <hr>
+            <label> User Name </label>
+            <input type="text" name="username" placeholder="User Name"><br>
+            <label> Firstname </label>
+            <input type="text" name="first_name" placeholder= "Firstname" size="15" required />
+            <label> Lastname: </label>
+            <input type="text" name="last_name" placeholder="Lastname" size="15" required />
+            <div>
+
+                <label><b>Email</b></label>
+                <input type="email" placeholder="Enter Email" name="email" required><br><br>
+
+                <label><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="password" required>
+
+                <label><b>Re-type Password</b></label>
+                <input type="password" placeholder="Retype Password" name="password1" required>
+                <input type="submit" class="registerbtn">
+            </div>
+        </div>
+    </form>
+
+    {% for msg in messages %}
+    <h1>{{msg}}</h1>
+    {% endfor %}
+</body>
+</html>
